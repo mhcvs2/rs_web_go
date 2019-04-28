@@ -1,0 +1,2827 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /cluster_config/:
+    get:
+      tags:
+      - cluster_config
+      description: get ClusterConfig
+      operationId: ClusterConfigController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ClusterConfig'
+        "403":
+          description: ""
+    post:
+      tags:
+      - cluster_config
+      description: create ClusterConfig
+      operationId: ClusterConfigController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ClusterConfig content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ClusterConfig'
+      responses:
+        "201":
+          description: '{int} models.ClusterConfig'
+        "403":
+          description: body is empty
+  /cluster_config/{id}:
+    get:
+      tags:
+      - cluster_config
+      description: get ClusterConfig by id
+      operationId: ClusterConfigController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ClusterConfig'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - cluster_config
+      description: update the ClusterConfig
+      operationId: ClusterConfigController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ClusterConfig content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ClusterConfig'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ClusterConfig'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - cluster_config
+      description: delete the ClusterConfig
+      operationId: ClusterConfigController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /instance_resource_group/:
+    get:
+      tags:
+      - instance_resource_group
+      description: get InstanceResourceGroup
+      operationId: InstanceResourceGroupController.Get By Page
+      parameters:
+      - in: query
+        name: page
+        description: Page number. Must be an integer
+        type: string
+      - in: query
+        name: pageSize
+        description: Limit the size of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstanceResourceGroup'
+        "403":
+          description: ""
+    post:
+      tags:
+      - instance_resource_group
+      description: create InstanceResourceGroup
+      operationId: InstanceResourceGroupController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for InstanceResourceGroup content
+        required: true
+        schema:
+          $ref: '#/definitions/models.InstanceResourceGroup'
+      responses:
+        "201":
+          description: '{int} models.InstanceResourceGroup'
+        "403":
+          description: body is empty
+  /instance_resource_group/{id}:
+    get:
+      tags:
+      - instance_resource_group
+      description: get InstanceResourceGroup by id
+      operationId: InstanceResourceGroupController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstanceResourceGroup'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - instance_resource_group
+      description: update the InstanceResourceGroup
+      operationId: InstanceResourceGroupController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for InstanceResourceGroup content
+        required: true
+        schema:
+          $ref: '#/definitions/models.InstanceResourceGroup'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstanceResourceGroup'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - instance_resource_group
+      description: delete the InstanceResourceGroup
+      operationId: InstanceResourceGroupController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /order_mq_message/:
+    get:
+      tags:
+      - order_mq_message
+      description: get OrderMqMessage
+      operationId: OrderMqMessageController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OrderMqMessage'
+        "403":
+          description: ""
+    post:
+      tags:
+      - order_mq_message
+      description: create OrderMqMessage
+      operationId: OrderMqMessageController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for OrderMqMessage content
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderMqMessage'
+      responses:
+        "201":
+          description: '{int} models.OrderMqMessage'
+        "403":
+          description: body is empty
+  /order_mq_message/{id}:
+    get:
+      tags:
+      - order_mq_message
+      description: get OrderMqMessage by id
+      operationId: OrderMqMessageController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OrderMqMessage'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - order_mq_message
+      description: update the OrderMqMessage
+      operationId: OrderMqMessageController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for OrderMqMessage content
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderMqMessage'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OrderMqMessage'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - order_mq_message
+      description: delete the OrderMqMessage
+      operationId: OrderMqMessageController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /product_info/:
+    get:
+      tags:
+      - product_info
+      description: get ProductInfo
+      operationId: ProductInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProductInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - product_info
+      description: create ProductInfo
+      operationId: ProductInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ProductInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductInfo'
+      responses:
+        "201":
+          description: '{int} models.ProductInfo'
+        "403":
+          description: body is empty
+  /product_info/{id}:
+    get:
+      tags:
+      - product_info
+      description: get ProductInfo by id
+      operationId: ProductInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProductInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - product_info
+      description: update the ProductInfo
+      operationId: ProductInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ProductInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProductInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - product_info
+      description: delete the ProductInfo
+      operationId: ProductInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /project_info/:
+    get:
+      tags:
+      - project_info
+      description: get ProjectInfo
+      operationId: ProjectInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProjectInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - project_info
+      description: create ProjectInfo
+      operationId: ProjectInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ProjectInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectInfo'
+      responses:
+        "201":
+          description: '{int} models.ProjectInfo'
+        "403":
+          description: body is empty
+  /project_info/{id}:
+    get:
+      tags:
+      - project_info
+      description: get ProjectInfo by id
+      operationId: ProjectInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProjectInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - project_info
+      description: update the ProjectInfo
+      operationId: ProjectInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ProjectInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProjectInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - project_info
+      description: delete the ProjectInfo
+      operationId: ProjectInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /project_safe_info/:
+    get:
+      tags:
+      - project_safe_info
+      description: get ProjectSafeInfo
+      operationId: ProjectSafeInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProjectSafeInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - project_safe_info
+      description: create ProjectSafeInfo
+      operationId: ProjectSafeInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ProjectSafeInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectSafeInfo'
+      responses:
+        "201":
+          description: '{int} models.ProjectSafeInfo'
+        "403":
+          description: body is empty
+  /project_safe_info/{id}:
+    get:
+      tags:
+      - project_safe_info
+      description: get ProjectSafeInfo by id
+      operationId: ProjectSafeInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProjectSafeInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - project_safe_info
+      description: update the ProjectSafeInfo
+      operationId: ProjectSafeInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ProjectSafeInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProjectSafeInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProjectSafeInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - project_safe_info
+      description: delete the ProjectSafeInfo
+      operationId: ProjectSafeInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /report_daily/:
+    get:
+      tags:
+      - report_daily
+      description: get ReportDaily
+      operationId: ReportDailyController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportDaily'
+        "403":
+          description: ""
+    post:
+      tags:
+      - report_daily
+      description: create ReportDaily
+      operationId: ReportDailyController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ReportDaily content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportDaily'
+      responses:
+        "201":
+          description: '{int} models.ReportDaily'
+        "403":
+          description: body is empty
+  /report_daily/{id}:
+    get:
+      tags:
+      - report_daily
+      description: get ReportDaily by id
+      operationId: ReportDailyController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportDaily'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - report_daily
+      description: update the ReportDaily
+      operationId: ReportDailyController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ReportDaily content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportDaily'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportDaily'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - report_daily
+      description: delete the ReportDaily
+      operationId: ReportDailyController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /report_hdfs_detail/:
+    get:
+      tags:
+      - report_hdfs_detail
+      description: get ReportHdfsDetail
+      operationId: ReportHdfsDetailController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportHdfsDetail'
+        "403":
+          description: ""
+    post:
+      tags:
+      - report_hdfs_detail
+      description: create ReportHdfsDetail
+      operationId: ReportHdfsDetailController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ReportHdfsDetail content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportHdfsDetail'
+      responses:
+        "201":
+          description: '{int} models.ReportHdfsDetail'
+        "403":
+          description: body is empty
+  /report_hdfs_detail/{id}:
+    get:
+      tags:
+      - report_hdfs_detail
+      description: get ReportHdfsDetail by id
+      operationId: ReportHdfsDetailController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportHdfsDetail'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - report_hdfs_detail
+      description: update the ReportHdfsDetail
+      operationId: ReportHdfsDetailController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ReportHdfsDetail content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportHdfsDetail'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportHdfsDetail'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - report_hdfs_detail
+      description: delete the ReportHdfsDetail
+      operationId: ReportHdfsDetailController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /report_yarn_detail/:
+    get:
+      tags:
+      - report_yarn_detail
+      description: get ReportYarnDetail
+      operationId: ReportYarnDetailController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportYarnDetail'
+        "403":
+          description: ""
+    post:
+      tags:
+      - report_yarn_detail
+      description: create ReportYarnDetail
+      operationId: ReportYarnDetailController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ReportYarnDetail content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportYarnDetail'
+      responses:
+        "201":
+          description: '{int} models.ReportYarnDetail'
+        "403":
+          description: body is empty
+  /report_yarn_detail/{id}:
+    get:
+      tags:
+      - report_yarn_detail
+      description: get ReportYarnDetail by id
+      operationId: ReportYarnDetailController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportYarnDetail'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - report_yarn_detail
+      description: update the ReportYarnDetail
+      operationId: ReportYarnDetailController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ReportYarnDetail content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportYarnDetail'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportYarnDetail'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - report_yarn_detail
+      description: delete the ReportYarnDetail
+      operationId: ReportYarnDetailController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /report_yarn_resource_log/:
+    get:
+      tags:
+      - report_yarn_resource_log
+      description: get ReportYarnResourceLog
+      operationId: ReportYarnResourceLogController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportYarnResourceLog'
+        "403":
+          description: ""
+    post:
+      tags:
+      - report_yarn_resource_log
+      description: create ReportYarnResourceLog
+      operationId: ReportYarnResourceLogController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ReportYarnResourceLog content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportYarnResourceLog'
+      responses:
+        "201":
+          description: '{int} models.ReportYarnResourceLog'
+        "403":
+          description: body is empty
+  /report_yarn_resource_log/{id}:
+    get:
+      tags:
+      - report_yarn_resource_log
+      description: get ReportYarnResourceLog by id
+      operationId: ReportYarnResourceLogController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportYarnResourceLog'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - report_yarn_resource_log
+      description: update the ReportYarnResourceLog
+      operationId: ReportYarnResourceLogController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ReportYarnResourceLog content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReportYarnResourceLog'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ReportYarnResourceLog'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - report_yarn_resource_log
+      description: delete the ReportYarnResourceLog
+      operationId: ReportYarnResourceLogController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /resource_common/:
+    get:
+      tags:
+      - resource_common
+      description: get ResourceCommon
+      operationId: ResourceCommonController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResourceCommon'
+        "403":
+          description: ""
+    post:
+      tags:
+      - resource_common
+      description: create ResourceCommon
+      operationId: ResourceCommonController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ResourceCommon content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ResourceCommon'
+      responses:
+        "201":
+          description: '{int} models.ResourceCommon'
+        "403":
+          description: body is empty
+  /resource_common/{id}:
+    get:
+      tags:
+      - resource_common
+      description: get ResourceCommon by id
+      operationId: ResourceCommonController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResourceCommon'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - resource_common
+      description: update the ResourceCommon
+      operationId: ResourceCommonController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ResourceCommon content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ResourceCommon'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResourceCommon'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - resource_common
+      description: delete the ResourceCommon
+      operationId: ResourceCommonController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /resource_end_point/:
+    get:
+      tags:
+      - resource_end_point
+      description: get ResourceEndPoint
+      operationId: ResourceEndPointController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResourceEndPoint'
+        "403":
+          description: ""
+    post:
+      tags:
+      - resource_end_point
+      description: create ResourceEndPoint
+      operationId: ResourceEndPointController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ResourceEndPoint content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ResourceEndPoint'
+      responses:
+        "201":
+          description: '{int} models.ResourceEndPoint'
+        "403":
+          description: body is empty
+  /resource_end_point/{id}:
+    get:
+      tags:
+      - resource_end_point
+      description: get ResourceEndPoint by id
+      operationId: ResourceEndPointController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResourceEndPoint'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - resource_end_point
+      description: update the ResourceEndPoint
+      operationId: ResourceEndPointController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ResourceEndPoint content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ResourceEndPoint'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResourceEndPoint'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - resource_end_point
+      description: delete the ResourceEndPoint
+      operationId: ResourceEndPointController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /trade_instance_resource/:
+    get:
+      tags:
+      - trade_instance_resource
+      description: get TradeInstanceResource
+      operationId: TradeInstanceResourceController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeInstanceResource'
+        "403":
+          description: ""
+    post:
+      tags:
+      - trade_instance_resource
+      description: create TradeInstanceResource
+      operationId: TradeInstanceResourceController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TradeInstanceResource content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeInstanceResource'
+      responses:
+        "201":
+          description: '{int} models.TradeInstanceResource'
+        "403":
+          description: body is empty
+  /trade_instance_resource/{id}:
+    get:
+      tags:
+      - trade_instance_resource
+      description: get TradeInstanceResource by id
+      operationId: TradeInstanceResourceController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeInstanceResource'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - trade_instance_resource
+      description: update the TradeInstanceResource
+      operationId: TradeInstanceResourceController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TradeInstanceResource content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeInstanceResource'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeInstanceResource'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - trade_instance_resource
+      description: delete the TradeInstanceResource
+      operationId: TradeInstanceResourceController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /trade_order/:
+    get:
+      tags:
+      - trade_order
+      description: get TradeOrder
+      operationId: TradeOrderController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeOrder'
+        "403":
+          description: ""
+    post:
+      tags:
+      - trade_order
+      description: create TradeOrder
+      operationId: TradeOrderController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TradeOrder content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeOrder'
+      responses:
+        "201":
+          description: '{int} models.TradeOrder'
+        "403":
+          description: body is empty
+  /trade_order/{id}:
+    get:
+      tags:
+      - trade_order
+      description: get TradeOrder by id
+      operationId: TradeOrderController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeOrder'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - trade_order
+      description: update the TradeOrder
+      operationId: TradeOrderController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TradeOrder content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeOrder'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeOrder'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - trade_order
+      description: delete the TradeOrder
+      operationId: TradeOrderController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /trade_product_info/:
+    get:
+      tags:
+      - trade_product_info
+      description: get TradeProductInfo
+      operationId: TradeProductInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeProductInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - trade_product_info
+      description: create TradeProductInfo
+      operationId: TradeProductInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TradeProductInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeProductInfo'
+      responses:
+        "201":
+          description: '{int} models.TradeProductInfo'
+        "403":
+          description: body is empty
+  /trade_product_info/{id}:
+    get:
+      tags:
+      - trade_product_info
+      description: get TradeProductInfo by id
+      operationId: TradeProductInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeProductInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - trade_product_info
+      description: update the TradeProductInfo
+      operationId: TradeProductInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TradeProductInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeProductInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeProductInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - trade_product_info
+      description: delete the TradeProductInfo
+      operationId: TradeProductInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /trade_sub_order/:
+    get:
+      tags:
+      - trade_sub_order
+      description: get TradeSubOrder
+      operationId: TradeSubOrderController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeSubOrder'
+        "403":
+          description: ""
+    post:
+      tags:
+      - trade_sub_order
+      description: create TradeSubOrder
+      operationId: TradeSubOrderController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TradeSubOrder content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeSubOrder'
+      responses:
+        "201":
+          description: '{int} models.TradeSubOrder'
+        "403":
+          description: body is empty
+  /trade_sub_order/{id}:
+    get:
+      tags:
+      - trade_sub_order
+      description: get TradeSubOrder by id
+      operationId: TradeSubOrderController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeSubOrder'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - trade_sub_order
+      description: update the TradeSubOrder
+      operationId: TradeSubOrderController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TradeSubOrder content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TradeSubOrder'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TradeSubOrder'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - trade_sub_order
+      description: delete the TradeSubOrder
+      operationId: TradeSubOrderController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /user_product_group_info/:
+    get:
+      tags:
+      - user_product_group_info
+      description: get UserProductGroupInfo
+      operationId: UserProductGroupInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductGroupInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - user_product_group_info
+      description: create UserProductGroupInfo
+      operationId: UserProductGroupInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for UserProductGroupInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProductGroupInfo'
+      responses:
+        "201":
+          description: '{int} models.UserProductGroupInfo'
+        "403":
+          description: body is empty
+  /user_product_group_info/{id}:
+    get:
+      tags:
+      - user_product_group_info
+      description: get UserProductGroupInfo by id
+      operationId: UserProductGroupInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductGroupInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - user_product_group_info
+      description: update the UserProductGroupInfo
+      operationId: UserProductGroupInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for UserProductGroupInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProductGroupInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductGroupInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - user_product_group_info
+      description: delete the UserProductGroupInfo
+      operationId: UserProductGroupInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /user_product_group_project_info/:
+    get:
+      tags:
+      - user_product_group_project_info
+      description: get UserProductGroupProjectInfo
+      operationId: UserProductGroupProjectInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductGroupProjectInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - user_product_group_project_info
+      description: create UserProductGroupProjectInfo
+      operationId: UserProductGroupProjectInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for UserProductGroupProjectInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProductGroupProjectInfo'
+      responses:
+        "201":
+          description: '{int} models.UserProductGroupProjectInfo'
+        "403":
+          description: body is empty
+  /user_product_group_project_info/{id}:
+    get:
+      tags:
+      - user_product_group_project_info
+      description: get UserProductGroupProjectInfo by id
+      operationId: UserProductGroupProjectInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductGroupProjectInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - user_product_group_project_info
+      description: update the UserProductGroupProjectInfo
+      operationId: UserProductGroupProjectInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for UserProductGroupProjectInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProductGroupProjectInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductGroupProjectInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - user_product_group_project_info
+      description: delete the UserProductGroupProjectInfo
+      operationId: UserProductGroupProjectInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /user_product_order_info/:
+    get:
+      tags:
+      - user_product_order_info
+      description: get UserProductOrderInfo
+      operationId: UserProductOrderInfoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductOrderInfo'
+        "403":
+          description: ""
+    post:
+      tags:
+      - user_product_order_info
+      description: create UserProductOrderInfo
+      operationId: UserProductOrderInfoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for UserProductOrderInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProductOrderInfo'
+      responses:
+        "201":
+          description: '{int} models.UserProductOrderInfo'
+        "403":
+          description: body is empty
+  /user_product_order_info/{id}:
+    get:
+      tags:
+      - user_product_order_info
+      description: get UserProductOrderInfo by id
+      operationId: UserProductOrderInfoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductOrderInfo'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - user_product_order_info
+      description: update the UserProductOrderInfo
+      operationId: UserProductOrderInfoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for UserProductOrderInfo content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProductOrderInfo'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserProductOrderInfo'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - user_product_order_info
+      description: delete the UserProductOrderInfo
+      operationId: UserProductOrderInfoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.ClusterConfig:
+    title: ClusterConfig
+    type: object
+    properties:
+      BasicKey:
+        type: string
+      ClusterKind:
+        type: integer
+        format: int64
+      ClusterName:
+        description: 集群名称
+        type: string
+      ClusterType:
+        type: integer
+        format: int64
+      Cookie:
+        description: api请求需要携带的cookie信息
+        type: string
+      FileType:
+        type: string
+      Host:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      IsDefault:
+        description: 1 是默认 0 否
+        type: integer
+        format: int64
+      NmHost:
+        type: string
+      ProductTypeId:
+        description: 支持的产品类型
+        type: string
+      RmHost:
+        description: resourceManager 地址
+        type: string
+      RootCuNum:
+        description: 集群总cu数
+        type: integer
+        format: int64
+      Status:
+        description: 状态 1 可以 0 禁用
+        type: integer
+        format: int64
+      Timestamp:
+        type: string
+        format: datetime
+      UserId:
+        description: 支持的用户id
+        type: string
+  models.InstanceResourceGroup:
+    title: InstanceResourceGroup
+    type: object
+    properties:
+      create_time:
+        type: string
+        format: datetime
+      description:
+        type: string
+      gp_name:
+        type: string
+      id:
+        type: integer
+        format: int64
+      is_default:
+        description: 是否默认资源分组 0 否 1是
+        type: integer
+        format: int64
+      item_no:
+        description: 计费项
+        type: string
+      product_type_id:
+        description: 产品类型id
+        type: integer
+        format: int64
+      region_code:
+        description: 机房code
+        type: string
+      resource_conf:
+        description: 资源队列,真正的队列是id+resource_conf
+        type: string
+      status:
+        description: 分组状态 0删除 1 正常
+        type: integer
+        format: int32
+      update_time:
+        type: string
+        format: datetime
+      user_id:
+        type: integer
+        format: int64
+      value_dev:
+        type: integer
+        format: int64
+      value_max:
+        type: integer
+        format: int64
+      value_min:
+        type: integer
+        format: int64
+      value_prod:
+        type: integer
+        format: int64
+  models.OrderMqMessage:
+    title: OrderMqMessage
+    type: object
+    properties:
+      ConsumeStatus:
+        description: 0=未处理，1=处理成功，2=处理失败
+        type: integer
+        format: int32
+      CreateTime:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      RawData:
+        description: 原始mq消息体
+        type: string
+      UpdateTime:
+        type: string
+        format: datetime
+      Uuid:
+        description: 唯一标识号 订单对象hashcode值
+        type: string
+  models.ProductInfo:
+    title: ProductInfo
+    type: object
+    properties:
+      Code:
+        type: string
+      Description:
+        description: 描述信息
+        type: string
+      DetailsPath:
+        description: 产品说明详情地址
+        type: string
+      FlowType:
+        description: 工作流 类型
+        type: integer
+        format: int64
+      Id:
+        type: integer
+        format: int64
+      LogoPath:
+        description: logo路径
+        type: string
+      Name:
+        description: 产品信息
+        type: string
+  models.ProjectInfo:
+    title: ProjectInfo
+    type: object
+    properties:
+      CreateTime:
+        description: 创建时间
+        type: string
+        format: datetime
+      Description:
+        description: 项目描述
+        type: string
+      Id:
+        type: integer
+        format: int64
+      IsDel:
+        description: '删除标识 0 未删除   1 已删除 默认为0 '
+        type: integer
+        format: int32
+      MasterId:
+        description: 项目具体负责人的唯一标识符  默认项目创建人即为项目负责人
+        type: string
+      MasterName:
+        description: 项目负责人名称
+        type: string
+      Name:
+        description: 项目描述
+        type: string
+      OwnerId:
+        description: 项目创建人
+        type: integer
+        format: int64
+      OwnerName:
+        description: 项目创建者名称
+        type: string
+      UpdateBy:
+        description: 更新者唯一标识符（主账号ID或者是子账号ID）
+        type: string
+      UpdateTime:
+        description: 更新时间
+        type: string
+        format: datetime
+      UseStatus:
+        description: 使用状态标识 0 禁用 1 启用 默认为 1
+        type: integer
+        format: int32
+  models.ProjectSafeInfo:
+    title: ProjectSafeInfo
+    type: object
+    properties:
+      CreateTime:
+        description: 创建时间
+        type: string
+        format: datetime
+      DevCommitSchedulerTask:
+        description: 允许开发人员提交任务调度  1 是 0 否
+        type: integer
+        format: int32
+      DevConfigAlert:
+        description: 允许开发人员配置报警 1 是 0 否
+        type: integer
+        format: int32
+      DevExecuteTask:
+        description: 允许开发人员立即执行任务   1 是 0 否
+        type: integer
+        format: int32
+      Id:
+        type: integer
+        format: int64
+      IsDel:
+        description: 删除标识 0 未删除 1 已删除  默认为0
+        type: integer
+        format: int32
+      ProjectId:
+        type: integer
+        format: int64
+      UpdateTime:
+        description: 更新时间
+        type: string
+        format: datetime
+      WorkflowSaveVersionNum:
+        description: 工作流保留版本数
+        type: integer
+        format: int64
+  models.ReportDaily:
+    title: ReportDaily
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      ItemNo:
+        type: string
+      MeasureDate:
+        type: string
+        format: datetime
+      MeasureValue:
+        type: number
+        format: double
+      ProductTypeId:
+        type: integer
+        format: int64
+      Timestamp:
+        type: string
+        format: datetime
+      UserId:
+        type: integer
+        format: int64
+  models.ReportHdfsDetail:
+    title: ReportHdfsDetail
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      ItemNo:
+        type: string
+      MeasureDate:
+        type: string
+        format: datetime
+      MeasureTime:
+        type: string
+        format: datetime
+      MeasureValue:
+        type: string
+      ProductTypeId:
+        type: integer
+        format: int64
+      RegionCode:
+        type: string
+      ResourceConf:
+        type: string
+      Timestamp:
+        type: string
+        format: datetime
+      UserId:
+        type: integer
+        format: int64
+  models.ReportYarnDetail:
+    title: ReportYarnDetail
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      ItemNo:
+        type: string
+      MeasureDate:
+        type: string
+        format: datetime
+      MeasureTime:
+        type: string
+        format: datetime
+      MeasureValue:
+        type: string
+      ProductTypeId:
+        type: integer
+        format: int64
+      RegionCode:
+        type: string
+      ResourceConf:
+        type: string
+      Timestamp:
+        type: string
+        format: datetime
+      UserId:
+        type: integer
+        format: int64
+  models.ReportYarnResourceLog:
+    title: ReportYarnResourceLog
+    type: object
+    properties:
+      ClusterId:
+        description: 集群id
+        type: integer
+        format: int64
+      Id:
+        type: integer
+        format: int64
+      MeasureDate:
+        description: yyyy-mm-dd
+        type: string
+        format: datetime
+      MeasureTime:
+        type: string
+        format: datetime
+      MeasureValue:
+        type: string
+      RegionCode:
+        type: string
+      ResourceConf:
+        type: string
+      Timestamp:
+        type: string
+        format: datetime
+  models.ResourceCommon:
+    title: ResourceCommon
+    type: object
+    properties:
+      Conf:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Timestamp:
+        type: string
+        format: datetime
+      Type:
+        type: string
+  models.ResourceEndPoint:
+    title: ResourceEndPoint
+    type: object
+    properties:
+      Conf:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Timestamp:
+        type: string
+        format: datetime
+      Type:
+        type: string
+      UserId:
+        type: integer
+        format: int64
+  models.TradeInstanceResource:
+    title: TradeInstanceResource
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      InstanceId:
+        type: string
+      IsResourceGroup:
+        description: 是否有资源组，0 无 1 有
+        type: integer
+        format: int64
+      ItemNo:
+        type: string
+      ResourceConf:
+        description: 实例计费项对应的资源配置
+        type: string
+      Value:
+        type: string
+      ValueDev:
+        type: string
+      ValueProd:
+        type: string
+  models.TradeOrder:
+    title: TradeOrder
+    type: object
+    properties:
+      AppId:
+        type: string
+      CreateTime:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Source:
+        type: integer
+        format: int64
+      Timestamp:
+        type: string
+        format: datetime
+      UserId:
+        type: integer
+        format: int64
+  models.TradeProductInfo:
+    title: TradeProductInfo
+    type: object
+    properties:
+      AvailabilityZone:
+        type: string
+      BillType:
+        type: integer
+        format: int64
+      CreateTime:
+        description: 创建时间
+        type: string
+        format: datetime
+      Duration:
+        type: integer
+        format: int64
+      DurationUnitDic:
+        type: integer
+        format: int64
+      Id:
+        type: integer
+        format: int64
+      ProductGroup:
+        type: integer
+        format: int64
+      ProductName:
+        type: string
+      ProductType:
+        type: integer
+        format: int64
+      Region:
+        type: string
+      UpdateTime:
+        description: 更新时间
+        type: string
+        format: datetime
+      UserId:
+        type: integer
+        format: int64
+      Zone:
+        type: string
+  models.TradeSubOrder:
+    title: TradeSubOrder
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      InstanceId:
+        description: 实例id
+        type: string
+      OrderId:
+        type: string
+      ProductGroup:
+        type: string
+      ProductId:
+        type: string
+      ProductType:
+        type: string
+      Region:
+        type: string
+      UserId:
+        description: 用户id
+        type: integer
+        format: int64
+  models.UserProductGroupInfo:
+    title: UserProductGroupInfo
+    type: object
+    properties:
+      CreateTime:
+        type: string
+        format: datetime
+      CuMax:
+        type: integer
+        format: int64
+      CuMin:
+        type: integer
+        format: int64
+      Description:
+        type: string
+      GpName:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      ProductTypeId:
+        description: 产品类型id
+        type: integer
+        format: int64
+      RegionCode:
+        description: 机房code
+        type: string
+      Status:
+        description: 分组状态 0删除 1 正常
+        type: integer
+        format: int32
+      UpdateTime:
+        type: string
+        format: datetime
+      UserId:
+        type: integer
+        format: int64
+  models.UserProductGroupProjectInfo:
+    title: UserProductGroupProjectInfo
+    type: object
+    properties:
+      CreateTime:
+        description: 创建时间
+        type: string
+        format: datetime
+      GroupId:
+        description: 分组id
+        type: integer
+        format: int64
+      Id:
+        type: integer
+        format: int64
+      ProjectId:
+        description: 项目id
+        type: integer
+        format: int64
+      RegionCode:
+        description: 机房code
+        type: string
+  models.UserProductOrderInfo:
+    title: UserProductOrderInfo
+    type: object
+    properties:
+      BillType:
+        description: 计费方式
+        type: integer
+        format: int64
+      CreateTime:
+        description: 订单创建时间
+        type: string
+        format: datetime
+      Id:
+        description: 订单id
+        type: integer
+        format: int64
+      ItemNoList:
+        description: 配置明细 json格式
+        type: string
+      OrderStatus:
+        description: 订单状态  0未开通 1 开通
+        type: integer
+        format: int32
+      ProductId:
+        description: 商品id
+        type: string
+      ProductTypeId:
+        description: 产品类型di
+        type: integer
+        format: int64
+      RegionCode:
+        description: 机房code
+        type: string
+      UpdateTime:
+        description: 更新时间
+        type: string
+        format: datetime
+      UserId:
+        description: 用户id
+        type: integer
+        format: int64
+tags:
+- name: cluster_config
+  description: |
+    ClusterConfigController operations for ClusterConfig
+- name: instance_resource_group
+  description: |
+    InstanceResourceGroupController operations for InstanceResourceGroup
+- name: order_mq_message
+  description: |
+    OrderMqMessageController operations for OrderMqMessage
+- name: product_info
+  description: |
+    ProductInfoController operations for ProductInfo
+- name: project_info
+  description: |
+    ProjectInfoController operations for ProjectInfo
+- name: project_safe_info
+  description: |
+    ProjectSafeInfoController operations for ProjectSafeInfo
+- name: report_daily
+  description: |
+    ReportDailyController operations for ReportDaily
+- name: report_hdfs_detail
+  description: |
+    ReportHdfsDetailController operations for ReportHdfsDetail
+- name: report_yarn_detail
+  description: |
+    ReportYarnDetailController operations for ReportYarnDetail
+- name: report_yarn_resource_log
+  description: |
+    ReportYarnResourceLogController operations for ReportYarnResourceLog
+- name: resource_common
+  description: |
+    ResourceCommonController operations for ResourceCommon
+- name: resource_end_point
+  description: |
+    ResourceEndPointController operations for ResourceEndPoint
+- name: trade_instance_resource
+  description: |
+    TradeInstanceResourceController operations for TradeInstanceResource
+- name: trade_order
+  description: |
+    TradeOrderController operations for TradeOrder
+- name: trade_product_info
+  description: |
+    TradeProductInfoController operations for TradeProductInfo
+- name: trade_sub_order
+  description: |
+    TradeSubOrderController operations for TradeSubOrder
+- name: user_product_group_info
+  description: |
+    UserProductGroupInfoController operations for UserProductGroupInfo
+- name: user_product_group_project_info
+  description: |
+    UserProductGroupProjectInfoController operations for UserProductGroupProjectInfo
+- name: user_product_order_info
+  description: |
+    UserProductOrderInfoController operations for UserProductOrderInfo

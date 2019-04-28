@@ -1,3 +1,5 @@
 
 
 .idea/
+*.tar.gz
+rs_web_go

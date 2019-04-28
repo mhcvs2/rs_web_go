@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"github.com/astaxie/beego/validation"
 	"rs_web_go/common"
 	"rs_web_go/models"
 	"strconv"
@@ -33,16 +34,35 @@ func (c *InstanceResourceGroupController) URLMapping() {
 // @Failure 403 body is empty
 // @router / [post]
 func (c *InstanceResourceGroupController) Post() {
+	userIdStr := c.Ctx.GetCookie("userId")
+	userId, _ := strconv.Atoi(userIdStr)
 	var v models.InstanceResourceGroup
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.UserId = int64(userId)
+		valid := validation.Validation{}
+		b, err := valid.Valid(&v)
+		if err != nil {
+			c.Data["json"] = common.NewErrorResponse(err.Error())
+			c.ServeJSON()
+			return
+		}
+		if !b {
+			errorStrs := make([]string, 0)
+			for _, err := range valid.Errors {
+				errorStrs = append(errorStrs, err.Message)
+			}
+			c.Data["json"] = common.NewErrorResponse(strings.Join(errorStrs, ","))
+			c.ServeJSON()
+			return
+		}
 		if _, err := models.AddInstanceResourceGroup(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = common.NewSuccessResponse(nil)
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = common.NewErrorResponse(err.Error())
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = common.NewErrorResponse(err.Error())
 	}
 	c.ServeJSON()
 }

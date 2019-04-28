@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"fmt"
+	"github.com/astaxie/beego/validation"
 	"reflect"
 	"rs_web_go/common"
 	"strings"
@@ -12,26 +13,32 @@ import (
 )
 
 type InstanceResourceGroup struct {
-	Id            int       `orm:"column(id);auto"`
-	UserId        int64     `orm:"column(user_id)"`
-	RegionCode    string    `orm:"column(region_code);size(50)" description:"机房code"`
-	ProductTypeId int       `orm:"column(product_type_id)" description:"产品类型id"`
-	GpName        string    `orm:"column(gp_name);size(50)"`
-	ItemNo        string    `orm:"column(item_no);size(255);null" description:"计费项"`
-	ValueMax      int       `orm:"column(value_max);null"`
-	ValueMin      int       `orm:"column(value_min);null"`
-	Description   string    `orm:"column(description);size(255);null"`
-	Status        int16     `orm:"column(status);null" description:"分组状态 0删除 1 正常"`
-	CreateTime    time.Time `orm:"column(create_time);type(datetime);null;auto_now_add"`
-	UpdateTime    time.Time `orm:"column(update_time);type(timestamp);null;auto_now"`
-	ResourceConf  string    `orm:"column(resource_conf);size(255);null" description:"资源队列,真正的队列是id+resource_conf"`
-	IsDefault     int       `orm:"column(is_default);null" description:"是否默认资源分组 0 否 1是"`
-	ValueDev      int       `orm:"column(value_dev);null"`
-	ValueProd     int       `orm:"column(value_prod);null"`
+	Id            int       `orm:"column(id);auto" json:"id"`
+	UserId        int64     `orm:"column(user_id)" json:"user_id" valid:"Required"`
+	RegionCode    string    `orm:"column(region_code);size(50)" description:"机房code" json:"region_code" valid:"Required"`
+	ProductTypeId int       `orm:"column(product_type_id)" description:"产品类型id" json:"product_type_id" valid:"Required"`
+	GpName        string    `orm:"column(gp_name);size(50)" json:"gp_name" valid:"Required"`
+	ItemNo        string    `orm:"column(item_no);size(255);null" description:"计费项" json:"item_no" valid:"Required"`
+	ValueMax      int       `orm:"column(value_max);null" json:"value_max"`
+	ValueMin      int       `orm:"column(value_min);null" json:"value_min"`
+	Description   string    `orm:"column(description);size(255);null" json:"description"`
+	Status        int16     `orm:"column(status);null" description:"分组状态 0删除 1 正常" json:"status"`
+	CreateTime    time.Time `orm:"column(create_time);type(datetime);null;auto_now_add" json:"create_time"`
+	UpdateTime    time.Time `orm:"column(update_time);type(timestamp);null;auto_now" json:"update_time"`
+	ResourceConf  string    `orm:"column(resource_conf);size(255);null" description:"资源队列,真正的队列是id+resource_conf" json:"resource_conf"`
+	IsDefault     int       `orm:"column(is_default);null" description:"是否默认资源分组 0 否 1是" json:"is_default"`
+	ValueDev      int       `orm:"column(value_dev);null" json:"value_dev" valid:"Required; Min(0)"`
+	ValueProd     int       `orm:"column(value_prod);null" json:"value_prod" valid:"Required; Min(0)"`
 }
 
 func (t *InstanceResourceGroup) TableName() string {
 	return "instance_resource_group"
+}
+
+func (t *InstanceResourceGroup) Valid(v *validation.Validation) {
+	if t.ItemNo != "CU" && t.ItemNo != "DCU" {
+		v.SetError("ItemNo", "must be in [CU, DCU]")
+	}
 }
 
 func init() {
