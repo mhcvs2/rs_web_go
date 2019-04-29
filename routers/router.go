@@ -28,6 +28,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/project",
+			beego.NSInclude(
+				&controllers.ProjectController{},
+			),
+		),
+
 		beego.NSNamespace("/order_mq_message",
 			beego.NSInclude(
 				&controllers.OrderMqMessageController{},

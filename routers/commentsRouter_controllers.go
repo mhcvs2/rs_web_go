@@ -196,6 +196,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["rs_web_go/controllers:ProjectController"] = append(beego.GlobalControllerRouter["rs_web_go/controllers:ProjectController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: `/`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["rs_web_go/controllers:ProjectInfoController"] = append(beego.GlobalControllerRouter["rs_web_go/controllers:ProjectInfoController"],
         beego.ControllerComments{
             Method: "Post",
