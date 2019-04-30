@@ -4,19 +4,25 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/cache"
 	"github.com/astaxie/beego/httplib"
 	"github.com/beego/bee/logger"
 	"strings"
+	"time"
 )
 
 const (
 	PROJECT_SERVICE_URL_KEY = "project_url"
 )
 
-var projectServiceUrl string
+var (
+	projectServiceUrl string
+	bm                cache.Cache
+)
 
 func init() {
 	projectServiceUrl = beego.AppConfig.String(PROJECT_SERVICE_URL_KEY)
+	bm, _ = cache.NewCache("memory", `{"interval":60}`)
 }
 
 type ProjectInfo struct {
@@ -25,8 +31,8 @@ type ProjectInfo struct {
 }
 
 type ProjectServiceResponse struct {
-	Status  int         `json:"status"`
-	Message string      `json:"message"`
+	Status  int    `json:"status"`
+	Message string `json:"message"`
 }
 
 func ProjectServiceGet(action string, headers map[string]string, params []string, v interface{}) error {
@@ -51,7 +57,7 @@ func ProjectServiceGet(action string, headers map[string]string, params []string
 	if err != nil {
 		return err
 	}
-	if response.Status != 200    {
+	if response.Status != 200 {
 		return fmt.Errorf(response.Message)
 	}
 	if err = json.Unmarshal(responseBytes, v); err != nil {
@@ -61,13 +67,24 @@ func ProjectServiceGet(action string, headers map[string]string, params []string
 }
 
 type GetAllProjectsResponse struct {
-	Status  int         `json:"status"`
-	Message string      `json:"message"`
-	Result []ProjectInfo
+	Status  int    `json:"status"`
+	Message string `json:"message"`
+	Result  []ProjectInfo
 }
 
 func GetAllProjects() ([]ProjectInfo, error) {
+	if bm.IsExist("projects") {
+		return bm.Get("projects").([]ProjectInfo), nil
+	}
 	var rep GetAllProjectsResponse
 	err := ProjectServiceGet("api/projects", make(map[string]string), nil, &rep)
-	return rep.Result, err
+	if err != nil {
+		return nil, err
+	} else {
+		err = bm.Put("projects", rep.Result, 100*time.Second)
+		if err != nil {
+			beeLogger.Log.Warnf("project put cache error: %s", err.Error())
+		}
+	}
+	return rep.Result, nil
 }
