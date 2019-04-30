@@ -49,8 +49,19 @@ func init() {
 // last inserted Id on success.
 func AddInstanceResourceGroup(m *InstanceResourceGroup) (id int64, err error) {
 	o := orm.NewOrm()
+	if err = o.Begin(); err != nil {
+		return 0, err
+	}
 	id, err = o.Insert(m)
-	return
+	if err != nil {
+		o.Rollback()
+		return id, err
+	}
+	if err = o.Commit(); err != nil {
+		o.Rollback()
+		return 0, err
+	}
+	return id, err
 }
 
 // GetInstanceResourceGroupById retrieves InstanceResourceGroup by Id. Returns error if
@@ -226,8 +237,6 @@ func GetAllInstanceResourceGroupByPage(query map[string]string, fields []string,
 	}
 	return nil, err
 }
-
-
 
 // UpdateInstanceResourceGroup updates InstanceResourceGroup by Id and returns error if
 // the record to be updated doesn't exist
